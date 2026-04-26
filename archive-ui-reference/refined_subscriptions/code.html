@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Aasapure - Subscription Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed": "#c1ebdf",
+                      "on-secondary-container": "#436a60",
+                      "on-primary": "#ffffff",
+                      "surface-container-high": "#e6e9e8",
+                      "on-primary-container": "#a8e7c5",
+                      "surface-container-highest": "#e1e3e2",
+                      "tertiary": "#713638",
+                      "primary": "#0f5238",
+                      "surface-variant": "#e1e3e2",
+                      "tertiary-fixed": "#ffdad9",
+                      "on-tertiary-fixed-variant": "#6f3537",
+                      "inverse-surface": "#2e3131",
+                      "inverse-primary": "#95d4b3",
+                      "background": "#f8faf9",
+                      "surface-container-low": "#f2f4f3",
+                      "surface": "#f8faf9",
+                      "inverse-on-surface": "#eff1f0",
+                      "tertiary-container": "#8d4d4e",
+                      "on-secondary-fixed-variant": "#274e45",
+                      "on-secondary": "#ffffff",
+                      "secondary-container": "#bee8dc",
+                      "outline-variant": "#bfc9c1",
+                      "secondary-fixed-dim": "#a6cfc3",
+                      "on-primary-fixed-variant": "#0e5138",
+                      "surface-bright": "#f8faf9",
+                      "error": "#ba1a1a",
+                      "surface-container": "#eceeed",
+                      "on-primary-fixed": "#002114",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary-fixed": "#00201a",
+                      "on-tertiary-fixed": "#390b0e",
+                      "outline": "#707973",
+                      "on-error": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "on-error-container": "#93000a",
+                      "secondary": "#3f665c",
+                      "tertiary-fixed-dim": "#ffb3b3",
+                      "on-tertiary": "#ffffff",
+                      "primary-container": "#2d6a4f",
+                      "on-surface-variant": "#404943",
+                      "primary-fixed-dim": "#95d4b3",
+                      "on-surface": "#191c1c",
+                      "on-tertiary-container": "#ffcfce",
+                      "surface-tint": "#2c694e",
+                      "surface-dim": "#d8dada",
+                      "on-background": "#191c1c",
+                      "primary-fixed": "#b1f0ce"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Manrope"],
+                      "body": ["Inter"],
+                      "label": ["Inter"]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8faf9;
+        }
+        h1, h2, h3, .brand-font {
+            font-family: 'Manrope', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- SideNavBar (Shared Component) -->
+<nav class="hidden md:flex flex-col fixed left-0 top-0 h-full p-4 bg-white dark:bg-slate-950 w-64 z-40 border-r border-surface-container transition-all duration-300 ease-in-out">
+<div class="mb-8 px-4 py-2">
+<span class="text-xl font-black text-emerald-900 dark:text-emerald-400">Aasapure</span>
+<p class="text-xs text-slate-500 font-medium">Fresh Daily</p>
+</div>
+<aside class="hidden md:flex flex-col fixed left-0 top-0 h-full p-4 bg-surface-container-lowest w-64 pt-24 z-40 border-r border-outline-variant/30">
+<div class="mb-8 px-4">
+<h2 class="text-xl font-black text-primary">Aasapure</h2>
+<p class="text-sm text-on-surface-variant font-medium">Fresh Daily</p>
+</div>
+
+<a href="/minimal_dashboard/code.html" class="flex items-center gap-3 px-4 py-3 bg-primary text-on-primary rounded-xl font-semibold">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm">Dashboard</span>
+</a>
+
+<a href="/refined_shop/code.html" class="flex items-center gap-3 px-4 py-3 hover:bg-surface-container rounded-xl">
+<span class="material-symbols-outlined">storefront</span>
+<span class="text-sm">Shop</span>
+</a>
+
+<a href="/minimal_track_order/code.html" class="flex items-center gap-3 px-4 py-3 hover:bg-surface-container rounded-xl">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-sm">Orders</span>
+</a>
+
+<a href="/refined_subscriptions/code.html" class="flex items-center gap-3 px-4 py-3 hover:bg-surface-container rounded-xl">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="text-sm">Subscriptions</span>
+</a>
+
+<a href="/refined_rewards/code.html" class="flex items-center gap-3 px-4 py-3 hover:bg-surface-container rounded-xl">
+<span class="material-symbols-outlined">redeem</span>
+<span class="text-sm">Rewards</span>
+</a>
+
+<a href="/refined_profile/code.html" class="flex items-center gap-3 px-4 py-3 hover:bg-surface-container rounded-xl">
+<span class="material-symbols-outlined">person</span>
+<span class="text-sm">Profile</span>
+</a>
+
+</aside>
+</nav>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 min-h-screen">
+<!-- TopAppBar (Shared Component) -->
+<header class="fixed top-0 left-0 md:left-64 right-0 z-30 bg-surface/80 dark:bg-slate-900/80 backdrop-blur-xl px-6 py-4 flex justify-between items-center border-b border-surface-container">
+<h2 class="text-2xl font-bold tracking-tighter text-emerald-900 dark:text-emerald-400">Manage Subscriptions</h2>
+<div class="flex items-center gap-4">
+<button class="p-2 text-emerald-900 hover:text-emerald-700 transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-emerald-900 hover:text-emerald-700 transition-colors">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="Modern close-up portrait of a smiling man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9WhmmDlGZrmTj6H-4xYsdoTB_d39VVYWlZJrphR-wyh-rsHsubaSE9TQfttmBZYXkC_QTmX4nRb_F8KDhjEc2FhdS4XFsFIS_k2PoMzTyAuhjeewN63K2QjjKZVRgFBkl6HJkWc2YI_ZLWLexxxL5H2uJ2XRBSSiNT7G_1ZsAt9Zm710iU5jK-0JoRvFgTkLj54V4v-fcppTZWyd6E9ubHOBKR3sjuQtGIIh7KCDZl_wCAyF7mtw-FKMMLwpbqMhMXf_2TriwErxq"/>
+</div>
+</div>
+</header>
+<div class="pt-24 px-6 pb-12 max-w-7xl mx-auto space-y-12">
+<!-- Hero Next Delivery Section -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+<div class="lg:col-span-8 bg-primary text-on-primary rounded-3xl p-8 relative overflow-hidden flex flex-col justify-between shadow-lg">
+<div class="relative z-10">
+<span class="bg-secondary-fixed text-on-secondary-container px-3 py-1 rounded-full text-[10px] font-black tracking-widest uppercase mb-6 inline-block">NEXT DELIVERY DATE</span>
+<h3 class="text-4xl font-extrabold tracking-tight mb-4 leading-tight">Monday, June 24th <br/>at 6:30 AM</h3>
+<p class="text-primary-fixed/80 max-w-md font-body text-sm">Your fresh supply is scheduled and our farm partners are preparing your order.</p>
+</div>
+<div class="mt-8 flex gap-4 relative z-10">
+<button class="bg-on-primary text-primary px-8 py-3 rounded-full font-bold text-sm hover:shadow-xl transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="edit_calendar">edit_calendar</span>
+                            Reschedule
+                        </button>
+</div>
+<!-- Abstract Background Graphic -->
+<div class="absolute -right-16 -bottom-16 w-80 h-80 bg-white/10 blur-3xl rounded-full"></div>
+</div>
+<div class="lg:col-span-4 bg-white dark:bg-slate-900 rounded-3xl p-6 shadow-sm border border-surface-container">
+<div class="flex justify-between items-center mb-6">
+<h4 class="font-headline font-bold text-lg">Calendar</h4>
+<div class="flex gap-1">
+<button class="p-1 hover:bg-surface-container rounded-lg"><span class="material-symbols-outlined text-xl" data-icon="chevron_left">chevron_left</span></button>
+<button class="p-1 hover:bg-surface-container rounded-lg"><span class="material-symbols-outlined text-xl" data-icon="chevron_right">chevron_right</span></button>
+</div>
+</div>
+<div class="grid grid-cols-7 gap-1 text-center text-[10px] mb-4 text-outline font-bold">
+<span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span>
+</div>
+<div class="grid grid-cols-7 gap-1">
+<div class="aspect-square flex items-center justify-center text-xs text-outline/40">20</div>
+<div class="aspect-square flex items-center justify-center text-xs text-outline/40">21</div>
+<div class="aspect-square flex items-center justify-center text-xs text-outline/40">22</div>
+<div class="aspect-square flex items-center justify-center text-xs text-outline/40">23</div>
+<div class="aspect-square flex items-center justify-center rounded-full bg-primary text-white text-xs font-bold shadow-md ring-4 ring-primary/10">24</div>
+<div class="aspect-square flex items-center justify-center text-xs font-medium border border-primary/20 rounded-full">25</div>
+<div class="aspect-square flex items-center justify-center text-xs font-medium border border-primary/20 rounded-full">26</div>
+</div>
+<div class="mt-6 pt-6 border-t border-surface-container text-xs text-outline text-center italic">
+                        "Your health is our daily priority."
+                    </div>
+</div>
+</section>
+<!-- Subscription List Controls -->
+<section>
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-8">
+<div>
+<h3 class="text-3xl font-extrabold text-on-surface">Active Subscriptions</h3>
+<p class="text-outline text-sm mt-1">Status: <span class="text-emerald-600 font-bold">{{subscriptionStatus}}</span></p>
+</div>
+<button class="bg-primary text-on-primary px-6 py-3 rounded-2xl font-bold text-sm flex items-center gap-2 hover:shadow-lg transition-all">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+                        Add New Subscription
+                    </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Cow Milk Card -->
+<div class="bg-white dark:bg-slate-900 rounded-[2rem] p-6 shadow-sm border border-surface-container flex flex-col justify-between hover:shadow-md transition-shadow">
+<div>
+<div class="flex justify-between items-start mb-6">
+<div class="w-16 h-16 rounded-2xl bg-secondary-container flex items-center justify-center overflow-hidden">
+<img alt="Pure Cow Milk Bottle" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyw__bKQMinIo-3kymx0od2IpBSrKO0z29CsbK0Os6f5O3zI2LmmXn2S11YsJZarJO4CsrApcNlxhwvLGUdpqFU58ucU4IUMwaTJjEMr9jbdcoq9fbMFa13IwQQqLgEAwmUypj18a8o4PVo-GBUwWPqFnxQuJ4Hsa4jkx4TuOdVzfPBUwx0CImhSld290H8AGvi4J4VMX5YmDRzsv6pOGG0GUiSf4RFXaGHqgazfUNUKpYpwfHhbaQ_3zTXqBk8w6IUEUY3BjFC9fN"/>
+</div>
+<span class="bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">ACTIVE</span>
+</div>
+<h4 class="text-xl font-bold text-on-surface mb-2">Pure Cow Milk</h4>
+<div class="space-y-2">
+<div class="flex items-center gap-2 text-outline text-sm">
+<span class="material-symbols-outlined text-sm" data-icon="opacity">opacity</span>
+<span>1 Litre</span>
+</div>
+<div class="flex items-center gap-2 text-outline text-sm">
+<span class="material-symbols-outlined text-sm" data-icon="event_repeat">event_repeat</span>
+<span>Delivered Daily</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-3 mt-8">
+<button class="py-3 px-4 rounded-xl bg-surface-container-high text-on-surface text-xs font-bold hover:bg-surface-variant transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="pause">pause</span>
+                                Pause
+                            </button>
+<button class="py-3 px-4 rounded-xl bg-primary text-on-primary text-xs font-bold hover:bg-emerald-800 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="edit">edit</span>
+                                Edit Qty
+                            </button>
+</div>
+</div>
+<!-- Organic Ghee Card -->
+<div class="bg-white dark:bg-slate-900 rounded-[2rem] p-6 shadow-sm border border-surface-container flex flex-col justify-between hover:shadow-md transition-shadow">
+<div>
+<div class="flex justify-between items-start mb-6">
+<div class="w-16 h-16 rounded-2xl bg-secondary-container flex items-center justify-center overflow-hidden">
+<img alt="Organic Ghee Jar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXBJWwVppLlSyoKB6k0owz0er_Pqo2CYaGm8X6rEIlZ5ihMWn4jL5lG5Z44ddtFjMcRf226lNqMrXkpTNuuYqsN2rqnvu1cVT-ACLkErhjHPUWCWGmBZzpGdrNxBOf4uy9UYIqTjz69wxAWWeSCHfsgWvjKLBZtl_5ybbXp4VGjLJmqHz-O8LDMuT31I_afH8K3CrCiVvn-6YcmuWrJ_545m3chpjKiGpOa5uxDEpFB_xwbvxKh4x1c_1dR69Ls7QFb96SC6m2uqKK"/>
+</div>
+<span class="bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">ACTIVE</span>
+</div>
+<h4 class="text-xl font-bold text-on-surface mb-2">Organic Ghee</h4>
+<div class="space-y-2">
+<div class="flex items-center gap-2 text-outline text-sm">
+<span class="material-symbols-outlined text-sm" data-icon="scale">scale</span>
+<span>500g Jar</span>
+</div>
+<div class="flex items-center gap-2 text-outline text-sm">
+<span class="material-symbols-outlined text-sm" data-icon="calendar_month">calendar_month</span>
+<span>Monthly (1st)</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-3 mt-8">
+<button class="py-3 px-4 rounded-xl bg-surface-container-high text-on-surface text-xs font-bold hover:bg-surface-variant transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="pause">pause</span>
+                                Pause
+                            </button>
+<button class="py-3 px-4 rounded-xl bg-primary text-on-primary text-xs font-bold hover:bg-emerald-800 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="edit">edit</span>
+                                Edit Qty
+                            </button>
+</div>
+</div>
+<!-- Empty State / Add More -->
+<div class="rounded-[2rem] p-8 border-2 border-dashed border-outline-variant flex flex-col items-center justify-center text-center cursor-pointer hover:bg-surface-container-low/50 hover:border-primary/50 transition-all group">
+<div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-primary transition-all">
+<span class="material-symbols-outlined text-primary group-hover:text-on-primary" data-icon="add_shopping_cart">add_shopping_cart</span>
+</div>
+<span class="font-bold text-on-surface text-lg">Add More Products</span>
+<p class="text-sm text-outline mt-2 max-w-[180px]">Curd, Paneer, or Fresh Butter to your morning routine</p>
+</div>
+</div>
+</section>
+<!-- Paused Subscriptions Section -->
+<section class="bg-surface-container-low/30 rounded-[2.5rem] p-8 border border-surface-container">
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-tertiary" data-icon="motion_photos_paused">motion_photos_paused</span>
+<h3 class="text-2xl font-bold text-on-surface">Paused Subscriptions</h3>
+</div>
+<div class="space-y-4">
+<!-- Paused Item Row -->
+<div class="bg-white dark:bg-slate-900 p-5 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-6 border border-surface-container">
+<div class="flex items-center gap-5 w-full sm:w-auto">
+<div class="w-16 h-16 rounded-xl bg-surface-container-high overflow-hidden opacity-40 grayscale">
+<img alt="Fresh Paneer" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6JhnbZa0iZdxauQmY779S9bbw1rtM4FUSejxuhI3sEZMwmwpFpnvrYW6lffK-Eas_BWoMSdaIL-DvLAE8nk8PS7SSRNdBdZUyaqL5hl5N_rjy8Zi3uO5LolKGLBIAkLQfhLC8mCOUoqGK4V2LSJOiTC5EtHnGX6X-V1qocxH09MpotAemwYVH2lns5n4hqWOnh_PoCCVNjZu9fwc8ZZOiZF3-V4zncTXJYwBtk8qoejwAo94a55dHWOVddbwuYx7OYe3zzb8VCX4C"/>
+</div>
+<div>
+<h5 class="font-bold text-on-surface text-lg leading-tight">Fresh Malai Paneer</h5>
+<p class="text-sm text-outline">250g, Twice a Week (Tue, Sat)</p>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+<div class="px-4 py-1 bg-tertiary-fixed text-on-tertiary-fixed-variant rounded-full text-xs font-bold uppercase tracking-wider">
+                                Paused since Jun 10
+                            </div>
+<button class="text-primary font-black text-sm hover:underline flex items-center gap-2 group">
+<span class="material-symbols-outlined text-lg transition-transform group-hover:scale-110" data-icon="play_circle">play_circle</span>
+                                Resume Delivery
+                            </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Support FAB -->
+<div class="fixed bottom-8 right-8 z-50">
+<button class="bg-primary text-on-primary w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 hover:rotate-6 transition-all group">
+<span class="material-symbols-outlined" data-icon="support_agent">support_agent</span>
+<span class="absolute right-full mr-4 bg-on-surface text-on-primary px-4 py-2 rounded-xl text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-xl">Need help?</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Mobile Bottom Navigation -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-white/95 backdrop-blur-md border-t border-surface-container z-40 px-6 py-4 flex justify-between items-center">
+<a class="flex flex-col items-center gap-1 text-slate-500" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-[10px] font-bold">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-500" href="#">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+<span class="text-[10px] font-bold">Shop</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-emerald-900" href="#">
+<div class="bg-emerald-100 px-3 py-1 rounded-full">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+</div>
+<span class="text-[10px] font-black">Subs</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-500" href="#">
+<span class="material-symbols-outlined" data-icon="redeem">redeem</span>
+<span class="text-[10px] font-bold">Rewards</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-500" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-[10px] font-bold">Account</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Order History - Aasapure</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#c1ebdf",
+                    "on-secondary-container": "#436a60",
+                    "on-primary": "#ffffff",
+                    "surface-container-high": "#e6e9e8",
+                    "on-primary-container": "#a8e7c5",
+                    "surface-container-highest": "#e1e3e2",
+                    "tertiary": "#713638",
+                    "primary": "#0f5238",
+                    "surface-variant": "#e1e3e2",
+                    "tertiary-fixed": "#ffdad9",
+                    "on-tertiary-fixed-variant": "#6f3537",
+                    "inverse-surface": "#2e3131",
+                    "inverse-primary": "#95d4b3",
+                    "background": "#f8faf9",
+                    "surface-container-low": "#f2f4f3",
+                    "surface": "#f8faf9",
+                    "inverse-on-surface": "#eff1f0",
+                    "tertiary-container": "#8d4d4e",
+                    "on-secondary-fixed-variant": "#274e45",
+                    "on-secondary": "#ffffff",
+                    "secondary-container": "#bee8dc",
+                    "outline-variant": "#bfc9c1",
+                    "secondary-fixed-dim": "#a6cfc3",
+                    "on-primary-fixed-variant": "#0e5138",
+                    "surface-bright": "#f8faf9",
+                    "error": "#ba1a1a",
+                    "surface-container": "#eceeed",
+                    "on-primary-fixed": "#002114",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed": "#00201a",
+                    "on-tertiary-fixed": "#390b0e",
+                    "outline": "#707973",
+                    "on-error": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-error-container": "#93000a",
+                    "secondary": "#3f665c",
+                    "tertiary-fixed-dim": "#ffb3b3",
+                    "on-tertiary": "#ffffff",
+                    "primary-container": "#2d6a4f",
+                    "on-surface-variant": "#404943",
+                    "primary-fixed-dim": "#95d4b3",
+                    "on-surface": "#191c1c",
+                    "on-tertiary-container": "#ffcfce",
+                    "surface-tint": "#2c694e",
+                    "surface-dim": "#d8dada",
+                    "on-background": "#191c1c",
+                    "primary-fixed": "#b1f0ce"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8faf9; }
+        h1, h2, h3, .brand-font { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Sidebar Navigation (Desktop) -->
+<aside class="hidden md:flex flex-col fixed left-0 top-0 h-full p-4 w-64 bg-slate-50 dark:bg-slate-950 z-50">
+<div class="flex items-center gap-3 px-2 mb-10">
+<div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined" data-icon="water_drop" style="">water_drop</span>
+</div>
+<div>
+<h1 class="text-xl font-black text-emerald-900 dark:text-emerald-400 leading-none" style="">Aasapure</h1>
+<p class="text-xs text-slate-500 font-medium tracking-wide mt-1" style="">Fresh Daily</p>
+</div>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-emerald-50 dark:hover:bg-emerald-950/50 rounded-xl transition-all duration-300 ease-in-out" href="#" style="">
+<span class="material-symbols-outlined" data-icon="dashboard" style="">dashboard</span>
+<span class="font-medium" style="">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-emerald-50 dark:hover:bg-emerald-950/50 rounded-xl transition-all duration-300 ease-in-out" href="#" style="">
+<span class="material-symbols-outlined" data-icon="storefront" style="">storefront</span>
+<span class="font-medium" style="">Shop</span>
+</a>
+<!-- Active State: Orders -->
+<a class="flex items-center gap-3 px-4 py-3 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-900 dark:text-emerald-100 rounded-xl font-semibold transition-all duration-300 ease-in-out" href="#" style="">
+<span class="material-symbols-outlined" data-icon="receipt_long" style="">receipt_long</span>
+<span class="font-medium" style="">Orders</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-emerald-50 dark:hover:bg-emerald-950/50 rounded-xl transition-all duration-300 ease-in-out" href="#" style="">
+<span class="material-symbols-outlined" data-icon="calendar_today" style="">calendar_today</span>
+<span class="font-medium" style="">Subscriptions</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-emerald-50 dark:hover:bg-emerald-950/50 rounded-xl transition-all duration-300 ease-in-out" href="#" style="">
+<span class="material-symbols-outlined" data-icon="redeem" style="">redeem</span>
+<span class="font-medium" style="">Rewards</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-emerald-50 dark:hover:bg-emerald-950/50 rounded-xl transition-all duration-300 ease-in-out" href="#" style="">
+<span class="material-symbols-outlined" data-icon="person" style="">person</span>
+<span class="font-medium" style="">Profile</span>
+</a>
+</nav>
+<div class="mt-auto p-4 bg-surface-container-low rounded-2xl">
+<div class="flex items-center gap-3 mb-3">
+<img alt="User profile" class="w-10 h-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZMxjueQaajQgjA7JJD462c19GDEwelgNqi0rhTcgOek1sDbHUVg-lqf8fHBgWk522sD-2Ys798Xk8j2hKn9ob_MZanr3ocQ9mDuYtpcFZ5ut6a37473-YBbP6_q4vzOavTi49s9yr045hc4B_0GnNK0DZuVJ8qHglTa5e5bf7-hv-ESwBnsMbIz-c6MPtG-w8rfHqtbuGHIw__tWUWvktnxtKKVVWo5nCLSHX-K2Etpneixu_hqbiTx2wEmMYDT_lR2RyBxsCgRA_" style="">
+<div class="overflow-hidden">
+<p class="text-sm font-bold text-on-surface truncate" style="">{user_name}</p>
+<p class="text-xs text-on-surface-variant truncate" style="">Premium Member</p>
+</div>
+</div>
+<button class="w-full py-2 bg-white border border-outline-variant text-xs font-bold rounded-lg hover:bg-slate-50 transition-colors" style="">Sign Out</button>
+</div>
+</aside>
+<!-- Top AppBar (Mobile/Content Header) -->
+<header class="fixed top-0 left-0 md:left-64 right-0 bg-surface/80 backdrop-blur-xl z-40 flex justify-between items-center px-6 py-4 border-b border-outline-variant/10">
+<div class="flex items-center gap-2">
+<span class="md:hidden material-symbols-outlined text-primary" data-icon="menu" style="">menu</span>
+<h2 class="text-xl font-bold tracking-tighter text-emerald-900" style="">Orders</h2>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center bg-surface-container-low px-4 py-2 rounded-full border-none">
+<span class="material-symbols-outlined text-on-surface-variant text-sm mr-2" data-icon="search" style="">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm p-0 w-32 lg:w-48 text-on-surface" placeholder="Search orders..." type="text">
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors relative" style="">
+<span class="material-symbols-outlined text-primary" data-icon="notifications" style="">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full border-2 border-surface"></span>
+</button>
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors" style="">
+<span class="material-symbols-outlined text-primary" data-icon="shopping_cart" style="">shopping_cart</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="pt-24 pb-12 px-6 md:ml-64 min-h-screen">
+<div class="max-w-6xl mx-auto">
+<!-- Hero / Stats Section -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<div class="md:col-span-2 relative overflow-hidden bg-primary-container rounded-3xl p-8 text-on-primary-container flex flex-col justify-between h-56 shadow-lg shadow-primary/10">
+<div class="relative z-10">
+<h3 class="text-3xl font-bold mb-2" style="">Order History</h3>
+<p class="text-on-primary-container/80 max-w-xs" style="">Track your dairy journey and reorder your favorites with one tap.</p>
+</div>
+<div class="relative z-10 flex gap-12">
+<div>
+<p class="text-4xl font-black" style="">{order_count}</p>
+<p class="text-xs uppercase tracking-widest font-bold opacity-70" style="">Total Orders</p>
+</div>
+<div>
+<p class="text-4xl font-black" style="">₹{cost_spent}</p>
+<p class="text-xs uppercase tracking-widest font-bold opacity-70" style="">Spent this month</p>
+</div>
+</div>
+<!-- Decorative Element -->
+<div class="absolute -right-12 -bottom-12 w-64 h-64 bg-emerald-400/20 rounded-full blur-3xl"></div>
+</div>
+<div class="bg-secondary-container rounded-3xl p-8 flex flex-col justify-center items-center text-center shadow-lg shadow-secondary-container/10">
+<span class="material-symbols-outlined text-5xl text-on-secondary-container mb-4" data-icon="auto_awesome" style="">auto_awesome</span>
+<h4 class="font-bold text-on-secondary-container mb-2" style=""><br></h4>
+<p class="text-sm text-on-secondary-container/80 mb-4" style=""><br></p>
+<button class="px-6 py-2 bg-on-secondary-container text-white rounded-full text-sm font-bold shadow-lg shadow-on-secondary-container/20 hover:opacity-90 transition-opacity" style=""><br></button>
+</div>
+</div>
+<!-- Filter Bar -->
+<div class="flex flex-wrap items-center justify-between gap-4 mb-8">
+<div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-2 sm:pb-0">
+<button class="px-5 py-2 bg-emerald-900 text-white rounded-full text-sm font-semibold whitespace-nowrap" style="">All Orders</button>
+<button class="px-5 py-2 bg-surface-container-high text-on-surface rounded-full text-sm font-medium whitespace-nowrap hover:bg-surface-container-highest transition-colors" style="">Delivered</button>
+<button class="px-5 py-2 bg-surface-container-high text-on-surface rounded-full text-sm font-medium whitespace-nowrap hover:bg-surface-container-highest transition-colors" style="">Processing</button>
+<button class="px-5 py-2 bg-surface-container-high text-on-surface rounded-full text-sm font-medium whitespace-nowrap hover:bg-surface-container-highest transition-colors" style="">Cancelled</button>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center bg-white border border-outline-variant rounded-xl px-4 py-2 text-sm text-on-surface-variant cursor-pointer hover:bg-surface-container-lowest transition-colors">
+<span class="material-symbols-outlined text-lg mr-2" data-icon="calendar_month" style="">calendar_month</span>
+<span class="font-medium" style="">Last 3 months</span>
+<span class="material-symbols-outlined text-lg ml-2" data-icon="expand_more" style="">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Order List -->
+<div class="space-y-4">
+<!-- Order Row 1 -->
+<div class="group bg-surface-container-lowest rounded-3xl p-6 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 border border-outline-variant/10 hover:border-emerald-200">
+<div class="flex flex-col lg:flex-row lg:items-center gap-8">
+<!-- Left Info -->
+<div class="flex-shrink-0 flex items-center gap-5">
+<div class="w-16 h-16 bg-surface-container-low rounded-2xl flex items-center justify-center overflow-hidden border border-outline-variant/10">
+<img alt="Product thumbnail" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCptuvxz_o93U4aeXpVWuBZz9vKm_v_1tSm26GKM9z1bpslLI1dkBr86jH3AuJaSUdPDSjzhOIE1mgYzqDjopPt2owBppsHc-9fB1Sq4dvowxcXyEBvxkt0ekJDzEKGvkBMK3FH6sKWYd2Hj-MGOY_rfYI6mTZerk1wTUKoy_lIHTXApzSRXRzBVGNixN40WOh7eWxFghs4sd036emQHBencB3Vrwo064Kdb3OLOs2GUGtR2-L5E6S32ARkqCWJSDifL-CebX8V2IpR" style="">
+</div>
+<div>
+<h4 class="font-bold text-lg text-on-surface" style="">#{{orderId}}98741</h4>
+<p class="text-sm text-on-surface-variant font-medium" style="">June 15, 2024</p>
+</div>
+</div>
+<!-- Mid Summary -->
+<div class="flex-grow grid grid-cols-2 sm:grid-cols-3 gap-6 border-l-0 lg:border-l lg:pl-8 border-outline-variant/20">
+<div>
+<p class="text-[10px] uppercase tracking-wider text-on-surface-variant font-bold mb-1 opacity-70" style="">Items</p>
+<p class="text-sm font-semibold text-on-surface truncate" style="">Farm Fresh Milk (2L), Organic Eggs (12pk)</p>
+</div>
+<div>
+<p class="text-[10px] uppercase tracking-wider text-on-surface-variant font-bold mb-1 opacity-70" style="">Total Amount</p>
+<p class="text-sm font-black text-primary" style="">₹450.00</p>
+</div>
+<div class="col-span-2 sm:col-span-1">
+<p class="text-[10px] uppercase tracking-wider text-on-surface-variant font-bold mb-1 opacity-70" style="">Status</p>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-100 text-emerald-900 rounded-full text-xs font-bold ring-1 ring-emerald-900/10" style="">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                                    Delivered
+                                </span>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-3 lg:ml-auto">
+<button class="flex-1 lg:flex-none px-6 py-3 bg-primary text-white rounded-2xl font-bold text-sm transition-all active:scale-95 flex items-center justify-center gap-2 shadow-lg shadow-primary/20 hover:bg-primary-container hover:text-on-primary-container" style="">
+<span class="material-symbols-outlined text-lg" data-icon="replay" style="">replay</span>
+                                Reorder
+                            </button>
+<button class="flex-1 lg:flex-none px-6 py-3 bg-surface-container-high text-on-surface rounded-2xl font-bold text-sm transition-all hover:bg-surface-container-highest flex items-center justify-center gap-2" style="">
+<span class="" style="">View Details</span>
+<span class="material-symbols-outlined text-lg" data-icon="chevron_right" style="">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Order Row 2 -->
+<div class="group bg-surface-container-lowest rounded-3xl p-6 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 border border-outline-variant/10 hover:border-emerald-200">
+<div class="flex flex-col lg:flex-row lg:items-center gap-8">
+<!-- Left Info -->
+<div class="flex-shrink-0 flex items-center gap-5">
+<div class="w-16 h-16 bg-surface-container-low rounded-2xl flex items-center justify-center overflow-hidden border border-outline-variant/10">
+<img alt="Product thumbnail" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-TaoOTIxz5bNBoOz5lDQGtrJlnJ0lq81Jwf1xgr75eCJtDkTIRhwT2_txf1HqACX1O_28GDVp0nIMF3dhRW3oFGwvXnW7WEhTbZW7zMdpcFsk9d-kIlc5ZNgS40a_v1tlhTrX7U2lmJNfA1egeBjAsCVzVkifrVJa0yu_7jevl-jMehZwqciYO2r9yFOISmK5lRHRUl_tpMGwCRttAzR9lsRqYSOoOaEU150fLdtDYr9iEsfULikrgAbeG6_nFEfJFxT5lWQsNFad" style="">
+</div>
+<div>
+<h4 class="font-bold text-lg text-on-surface" style="">#{{orderId}}98602</h4>
+<p class="text-sm text-on-surface-variant font-medium" style="">June 10, 2024</p>
+</div>
+</div>
+<!-- Mid Summary -->
+<div class="flex-grow grid grid-cols-2 sm:grid-cols-3 gap-6 border-l-0 lg:border-l lg:pl-8 border-outline-variant/20">
+<div>
+<p class="text-[10px] uppercase tracking-wider text-on-surface-variant font-bold mb-1 opacity-70" style="">Items</p>
+<p class="text-sm font-semibold text-on-surface truncate" style="">Greek Yogurt (500g), Artisanal Butter</p>
+</div>
+<div>
+<p class="text-[10px] uppercase tracking-wider text-on-surface-variant font-bold mb-1 opacity-70" style="">Total Amount</p>
+<p class="text-sm font-black text-primary" style="">₹320.00</p>
+</div>
+<div class="col-span-2 sm:col-span-1">
+<p class="text-[10px] uppercase tracking-wider text-on-surface-variant font-bold mb-1 opacity-70" style="">Status</p>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-100 text-emerald-900 rounded-full text-xs font-bold ring-1 ring-emerald-900/10" style="">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                                    Delivered
+                                </span>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-3 lg:ml-auto">
+<button class="flex-1 lg:flex-none px-6 py-3 bg-primary text-white rounded-2xl font-bold text-sm transition-all active:scale-95 flex items-center justify-center gap-2 shadow-lg shadow-primary/20 hover:bg-primary-container hover:text-on-primary-container" style="">
+<span class="material-symbols-outlined text-lg" data-icon="replay" style="">replay</span>
+                                Reorder
+                            </button>
+<button class="flex-1 lg:flex-none px-6 py-3 bg-surface-container-high text-on-surface rounded-2xl font-bold text-sm transition-all hover:bg-surface-container-highest flex items-center justify-center gap-2" style="">
+<span class="" style="">View Details</span>
+<span class="material-symbols-outlined text-lg" data-icon="chevron_right" style="">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Empty State Suggestion -->
+<div class="flex flex-col items-center justify-center py-16 border-2 border-dashed border-outline-variant/20 rounded-3xl bg-surface-container-low/30">
+<div class="w-16 h-16 bg-surface-container-high rounded-full flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-3xl text-primary opacity-60" data-icon="history" style="">history</span>
+</div>
+<p class="text-on-surface font-semibold" style="">Looking for an older order?</p>
+<p class="text-on-surface-variant text-sm mb-4" style="">You can access your complete purchase history below.</p>
+<button class="text-primary font-bold text-sm hover:underline underline-offset-4 transition-all" style="">Load more history</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Mobile Bottom Navigation Shell -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-surface/80 backdrop-blur-xl flex justify-around items-center px-4 py-3 z-50 border-t border-outline-variant/10 shadow-[0_-8px_24px_rgba(0,0,0,0.05)]">
+<a class="flex flex-col items-center gap-1 text-slate-600" href="#" style="">
+<span class="material-symbols-outlined" data-icon="home" style="">home</span>
+<span class="text-[10px] font-bold" style="">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-600" href="#" style="">
+<span class="material-symbols-outlined" data-icon="storefront" style="">storefront</span>
+<span class="text-[10px] font-bold" style="">Shop</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-emerald-900" href="#" style="">
+<span class="material-symbols-outlined font-bold" data-icon="receipt_long" style="">receipt_long</span>
+<span class="text-[10px] font-bold" style="">Orders</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-600" href="#" style="">
+<span class="material-symbols-outlined" data-icon="calendar_today" style="">calendar_today</span>
+<span class="text-[10px] font-bold" style="">Plan</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-600" href="#" style="">
+<span class="material-symbols-outlined" data-icon="person" style="">person</span>
+<span class="text-[10px] font-bold" style="">Me</span>
+</a>
+</nav>
+</body></html>

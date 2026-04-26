@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#c1ebdf",
+                    "on-secondary-container": "#436a60",
+                    "on-primary": "#ffffff",
+                    "surface-container-high": "#e6e9e8",
+                    "on-primary-container": "#a8e7c5",
+                    "surface-container-highest": "#e1e3e2",
+                    "tertiary": "#713638",
+                    "primary": "#0f5238",
+                    "surface-variant": "#e1e3e2",
+                    "tertiary-fixed": "#ffdad9",
+                    "on-tertiary-fixed-variant": "#6f3537",
+                    "inverse-surface": "#2e3131",
+                    "inverse-primary": "#95d4b3",
+                    "background": "#f8faf9",
+                    "surface-container-low": "#f2f4f3",
+                    "surface": "#f8faf9",
+                    "inverse-on-surface": "#eff1f0",
+                    "tertiary-container": "#8d4d4e",
+                    "on-secondary-fixed-variant": "#274e45",
+                    "on-secondary": "#ffffff",
+                    "secondary-container": "#bee8dc",
+                    "outline-variant": "#bfc9c1",
+                    "secondary-fixed-dim": "#a6cfc3",
+                    "on-primary-fixed-variant": "#0e5138",
+                    "surface-bright": "#f8faf9",
+                    "error": "#ba1a1a",
+                    "surface-container": "#eceeed",
+                    "on-primary-fixed": "#002114",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed": "#00201a",
+                    "on-tertiary-fixed": "#390b0e",
+                    "outline": "#707973",
+                    "on-error": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-error-container": "#93000a",
+                    "secondary": "#3f665c",
+                    "tertiary-fixed-dim": "#ffb3b3",
+                    "on-tertiary": "#ffffff",
+                    "primary-container": "#2d6a4f",
+                    "on-surface-variant": "#404943",
+                    "primary-fixed-dim": "#95d4b3",
+                    "on-surface": "#191c1c",
+                    "on-tertiary-container": "#ffcfce",
+                    "surface-tint": "#2c694e",
+                    "surface-dim": "#d8dada",
+                    "on-background": "#191c1c",
+                    "primary-fixed": "#b1f0ce"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        }
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8faf9; color: #191c1c; }
+        h1, h2, h3, h4 { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-surface selection:bg-primary-fixed selection:text-on-primary-fixed min-h-screen flex flex-col">
+<nav class="fixed top-0 left-0 w-full flex justify-between items-center px-6 py-4 bg-surface/80 backdrop-blur-xl z-50 border-b border-surface-container">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold tracking-tighter text-primary">Aasapure</span>
+<div class="hidden md:flex gap-6 items-center">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-medium text-sm" href="#">Shop</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-medium text-sm" href="#">Subscriptions</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-medium text-sm" href="#">Farms</a>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors relative">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden ml-2 border border-outline-variant">
+<img alt="User profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBszo_fQry5wYNdH5XLIFwJb_h5pQF8oqzcTCM2iSU7k3rEWepPIQkiBGT-bukT04y3SRzFbJlXg3SCruP2Cj6m-dFdPGl7Hyh10h81cW8sg5ME-G9bdVM_2k93Eruy1_XQh8ZadPaZZ7ugMvpURCiiGHLhXRped5YwjRS63kSnSFZiqP_X5PnIdz7p2892n_zrgKvRiIMarBw66ROvTXV1ZLMB6JpuYDH3uf_B-R8L0d6D7i5q9iqbuhRqts5aFpYusr2RK-nryJq9"/>
+</div>
+</div>
+</nav>
+<main class="pt-24 pb-16 px-4 md:px-8 max-w-6xl mx-auto w-full flex-grow">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<!-- Product Image -->
+<div class="relative aspect-square overflow-hidden rounded-3xl bg-surface-container-low">
+<img alt="Pure Cow Milk" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3aMBT3XFSv79FOmsA44fYCn-4YTsqWw-SmEbr8YXmJUPnPYRnUeZu2jaUTDceThx1KyPSk9ZqdL8LZa-_MO9lP7UvVuQbS5jShgpPlruWuFQWVSyPx2UdPp_ecCTQrJrsaJVR4VXMDl6z1W17Znr9-nB3B8Ne_-ctCuts_eTb5Q1eTDHMYHub2cGBAPvUXWR8pkahhr8aPZPE6ZFoCYkuNV9zz-DAeQ2nPKfx54F6UgOZnI0XxkBzmlW7JIpy1ZwjWDmc8xXYu4yc"/>
+<div class="absolute top-6 left-6">
+<span class="px-3 py-1 bg-white/90 backdrop-blur-md text-primary font-bold text-[10px] tracking-widest uppercase rounded-full shadow-sm">A2 Certified</span>
+</div>
+</div>
+<!-- Product Details -->
+<div class="flex flex-col">
+<nav class="flex items-center gap-2 text-xs text-on-surface-variant mb-4">
+<span>Dairy</span>
+<span class="material-symbols-outlined text-[10px]" data-icon="chevron_right">chevron_right</span>
+<span class="text-primary font-medium">Fresh Milk</span>
+</nav>
+<h1 class="text-4xl font-extrabold text-on-surface tracking-tight mb-2">Pure Cow Milk</h1>
+<div class="flex items-baseline gap-2 mb-6">
+<span class="text-3xl font-bold text-primary">₹70</span>
+<span class="text-on-surface-variant font-medium">/ Litre</span>
+</div>
+<p class="text-on-surface-variant leading-relaxed mb-8">
+                    Freshly sourced from local farms, chilled and delivered within hours of milking. No additives, 100% pure. Rich in essential nutrients and natural creaminess.
+                </p>
+<div class="grid grid-cols-2 gap-4 mb-8">
+<div class="p-4 bg-surface-container-low rounded-2xl border border-surface-container">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest block mb-1">Fat Content</span>
+<span class="text-lg font-bold text-on-surface">3.8% - 4.2%</span>
+</div>
+<div class="p-4 bg-surface-container-low rounded-2xl border border-surface-container">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest block mb-1">Source</span>
+<span class="text-lg font-bold text-on-surface">Grass-Fed</span>
+</div>
+</div>
+<div class="space-y-6">
+<div class="flex flex-col gap-2">
+<label class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Select Quantity</label>
+<div class="flex items-center bg-surface-container-low border border-outline-variant rounded-xl p-1 w-max">
+<button class="w-10 h-10 flex items-center justify-center text-primary hover:bg-surface-container transition-colors rounded-lg">
+<span class="material-symbols-outlined" data-icon="remove">remove</span>
+</button>
+<span class="w-12 text-center font-bold text-lg">1</span>
+<button class="w-10 h-10 flex items-center justify-center text-primary hover:bg-surface-container transition-colors rounded-lg">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-3 pt-4 border-t border-surface-container">
+<button class="w-full py-4 px-8 bg-primary text-on-primary font-bold rounded-2xl shadow-lg shadow-primary/10 hover:bg-primary-container transition-colors flex items-center justify-center gap-3">
+<span class="material-symbols-outlined" data-icon="shopping_basket">shopping_basket</span>
+                            Add to Cart
+                        </button>
+<div class="grid grid-cols-2 gap-3">
+<button class="py-4 px-4 bg-surface-container-high text-on-surface font-bold rounded-2xl hover:bg-surface-container-highest transition-colors flex items-center justify-center gap-2 text-sm">
+<span class="material-symbols-outlined text-lg" data-icon="calendar_today">calendar_today</span>
+                                Subscribe Daily
+                            </button>
+<button class="py-4 px-4 bg-surface-container-high text-on-surface font-bold rounded-2xl hover:bg-surface-container-highest transition-colors flex items-center justify-center gap-2 text-sm">
+<span class="material-symbols-outlined text-lg" data-icon="event_repeat">event_repeat</span>
+                                Weekly Plan
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="bg-surface-container-low py-8 px-6 border-t border-surface-container">
+<div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<span class="text-xl font-bold tracking-tighter text-primary">Aasapure</span>
+<div class="flex gap-8 text-xs text-on-surface-variant font-medium">
+<a class="hover:text-primary" href="#">Privacy Policy</a>
+<a class="hover:text-primary" href="#">Terms of Service</a>
+<a class="hover:text-primary" href="#">Help Center</a>
+</div>
+<p class="text-[10px] text-on-surface-variant">© 2024 Aasapure Dairy Farms.</p>
+</div>
+</footer>
+</body></html>

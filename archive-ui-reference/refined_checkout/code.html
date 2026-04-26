@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Checkout | Aasapure</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#c1ebdf",
+                        "on-secondary-container": "#436a60",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#e6e9e8",
+                        "on-primary-container": "#a8e7c5",
+                        "surface-container-highest": "#e1e3e2",
+                        "tertiary": "#713638",
+                        "primary": "#0f5238",
+                        "surface-variant": "#e1e3e2",
+                        "tertiary-fixed": "#ffdad9",
+                        "on-tertiary-fixed-variant": "#6f3537",
+                        "inverse-surface": "#2e3131",
+                        "inverse-primary": "#95d4b3",
+                        "background": "#f8faf9",
+                        "surface-container-low": "#f2f4f3",
+                        "surface": "#f8faf9",
+                        "inverse-on-surface": "#eff1f0",
+                        "tertiary-container": "#8d4d4e",
+                        "on-secondary-fixed-variant": "#274e45",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#bee8dc",
+                        "outline-variant": "#bfc9c1",
+                        "secondary-fixed-dim": "#a6cfc3",
+                        "on-primary-fixed-variant": "#0e5138",
+                        "surface-bright": "#f8faf9",
+                        "error": "#ba1a1a",
+                        "surface-container": "#eceeed",
+                        "on-primary-fixed": "#002114",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#00201a",
+                        "on-tertiary-fixed": "#390b0e",
+                        "outline": "#707973",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "secondary": "#3f665c",
+                        "tertiary-fixed-dim": "#ffb3b3",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#2d6a4f",
+                        "on-surface-variant": "#404943",
+                        "primary-fixed-dim": "#95d4b3",
+                        "on-surface": "#191c1c",
+                        "on-tertiary-container": "#ffcfce",
+                        "surface-tint": "#2c694e",
+                        "surface-dim": "#d8dada",
+                        "on-background": "#191c1c",
+                        "primary-fixed": "#b1f0ce"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .brand-font { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen">
+<!-- Top Navigation Shell -->
+<header class="fixed top-0 left-0 w-full z-50 bg-surface/80 backdrop-blur-xl px-6 py-4 flex items-center justify-between border-b border-surface-container">
+<div class="flex items-center gap-4">
+<a class="p-2 hover:bg-surface-container rounded-full transition-colors" href="#">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</a>
+<h1 class="text-2xl font-bold tracking-tighter text-emerald-900 brand-font">Aasapure</h1>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant text-sm font-medium">
+<span class="material-symbols-outlined text-primary text-base" style="font-variation-settings: 'FILL' 1;">shield_lock</span>
+<span class="hidden sm:inline">Secure Checkout</span>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Checkout Details -->
+<div class="lg:col-span-7 space-y-8">
+<!-- Section: Order Type Toggle -->
+<section>
+<h2 class="text-lg font-bold mb-4 text-emerald-900 tracking-tight">Order Type</h2>
+<div class="bg-surface-container-low p-1.5 rounded-2xl flex items-center shadow-sm">
+<button class="flex-1 py-3 px-4 rounded-xl text-sm font-semibold transition-all bg-surface-container-lowest text-emerald-900 shadow-sm">
+                        One-time Order
+                    </button>
+<button class="flex-1 py-3 px-4 rounded-xl text-sm font-semibold transition-all text-slate-500 hover:text-emerald-700">
+                        Subscription
+                    </button>
+</div>
+</section>
+<!-- Section: Delivery Address -->
+<section class="bg-surface-container-low rounded-3xl p-6 border border-transparent hover:border-surface-container transition-all">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+</div>
+<h2 class="text-lg font-bold text-emerald-900">Delivery Address</h2>
+</div>
+<button class="text-primary text-sm font-bold hover:underline px-3 py-1 bg-surface-container-lowest rounded-full shadow-sm border border-surface-container">Edit</button>
+</div>
+<div class="pl-13">
+<p class="font-semibold text-on-surface">Home • Rahul Sharma</p>
+<p class="text-on-surface-variant text-sm leading-relaxed mt-1">
+                        Apt 402, Green Valley Towers, Sector 45<br/>
+                        Gurugram, Haryana - 122003
+                    </p>
+<p class="text-on-surface-variant text-sm mt-3 font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">call</span> +91 98765 43210
+                    </p>
+</div>
+</section>
+<!-- Section: Delivery Slot -->
+<section>
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-emerald-900">schedule</span>
+<h2 class="text-lg font-bold text-emerald-900">Delivery Slot</h2>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<button class="p-4 rounded-2xl bg-surface-container-lowest border-2 border-primary ring-4 ring-primary/5 text-left flex justify-between items-center group shadow-sm">
+<div>
+<p class="text-xs font-bold text-primary uppercase tracking-wider">Morning</p>
+<p class="font-bold text-on-surface">6:00 AM - 8:00 AM</p>
+<p class="text-xs text-on-surface-variant mt-0.5">Perfect for fresh milk</p>
+</div>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</button>
+<button class="p-4 rounded-2xl bg-surface-container-lowest border-2 border-transparent hover:border-outline-variant text-left flex justify-between items-center transition-all shadow-sm">
+<div>
+<p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Early Morning</p>
+<p class="font-bold text-on-surface">4:00 AM - 6:00 AM</p>
+<p class="text-xs text-on-surface-variant mt-0.5">Quiet doorstep delivery</p>
+</div>
+<span class="material-symbols-outlined text-slate-300">circle</span>
+</button>
+</div>
+</section>
+<!-- Section: Payment Methods -->
+<section class="space-y-4">
+<h2 class="text-lg font-bold text-emerald-900">Payment Method</h2>
+<div class="bg-surface-container-low rounded-3xl p-2 space-y-2">
+<!-- UPI -->
+<label class="bg-surface-container-lowest p-4 rounded-2xl flex items-center justify-between cursor-pointer border border-transparent hover:border-primary/20 transition-all shadow-sm">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center border border-surface-container">
+<span class="material-symbols-outlined text-on-surface-variant">account_balance_wallet</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">UPI (Google Pay / PhonePe)</p>
+<p class="text-xs text-on-surface-variant">Instant &amp; Secure</p>
+</div>
+</div>
+<input class="w-5 h-5 text-primary focus:ring-primary border-slate-300" name="payment" type="radio"/>
+</label>
+<!-- Cards -->
+<label class="bg-surface-container-lowest p-4 rounded-2xl flex items-center justify-between border-2 border-primary ring-4 ring-primary/5 cursor-pointer shadow-sm">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-xl bg-secondary-container/30 flex items-center justify-center border border-primary/10">
+<span class="material-symbols-outlined text-primary">credit_card</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Credit / Debit Card</p>
+<p class="text-xs text-on-surface-variant">HDFC Bank Card ending in 4590</p>
+</div>
+</div>
+<input checked="" class="w-5 h-5 text-primary focus:ring-primary border-slate-300" name="payment" type="radio"/>
+</label>
+<!-- Net Banking -->
+<label class="bg-surface-container-lowest p-4 rounded-2xl flex items-center justify-between cursor-pointer border border-transparent hover:border-primary/20 transition-all shadow-sm">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center border border-surface-container">
+<span class="material-symbols-outlined text-on-surface-variant">account_balance</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Net Banking</p>
+<p class="text-xs text-on-surface-variant">All Indian banks available</p>
+</div>
+</div>
+<input class="w-5 h-5 text-primary focus:ring-primary border-slate-300" name="payment" type="radio"/>
+</label>
+</div>
+</section>
+</div>
+<!-- Right Column: Order Summary (Sticky) -->
+<aside class="lg:col-span-5">
+<div class="sticky top-24 space-y-6">
+<div class="bg-surface-container-lowest rounded-3xl p-6 shadow-xl shadow-emerald-900/5 border border-surface-container">
+<h2 class="text-xl font-bold mb-6 text-emerald-900">Order Summary</h2>
+<!-- Items -->
+<div class="space-y-4 mb-6">
+<div class="flex gap-4">
+<div class="w-16 h-16 rounded-2xl overflow-hidden flex-shrink-0 bg-surface-container-low">
+<img alt="Pure Buffalo Milk" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC08ltimwOpxZq1MfYspXePONTzhipdjIeBe4KFmk1x3q8HJY-cMgbv9GS0ei1aG6jykrGV6n4KCWX_ASK2FjQkPDoGUCUqCU5P3_KbmVtqgakIzIOoVrfaH5qwwLdOqc3EVWwHL1PEDBgRT-yANlyCSLYqZVJg5pOGrNq1UrXw-ILfrMX1zSwu-_0MAP4MfE1QrD-dHeHDXCIfHLY3UYXLhV166HrpiA1NC8miB_qCsL_K3GdokI10efmbY17ttW2VNeDGOQkUArKi"/>
+</div>
+<div class="flex-1">
+<p class="font-bold text-on-surface text-sm">Pure Buffalo Milk (1L)</p>
+<p class="text-[10px] text-on-surface-variant mb-1 uppercase tracking-wider font-semibold">Pack of 2</p>
+<div class="flex justify-between items-center">
+<span class="text-xs font-semibold text-primary px-2 py-0.5 bg-secondary-container/50 rounded-lg">Qty: 2</span>
+<span class="font-bold text-on-surface text-sm">₹180</span>
+</div>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-16 h-16 rounded-2xl overflow-hidden flex-shrink-0 bg-surface-container-low">
+<img alt="Organic Paneer" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuw4yHBYZOQvPclpxjA5yxRqO4bKw3P5CCh_6S9rqaf3wlxa9Kmxv4bVspzzBvXGeRST5__rUXROLscNJvmJYzabTGhoM8ba-EaBz21Lr55stdkmkW7CNzw9S8C98GI4hhdH1ZBXcofH_VonepL5acaNItxA0Q95kv-pSwCGXBUjvsyXCmxG-CXu_b9BqXQFwi7JSj6Ck7xlhn2B33-SD_AQEWfm7-uF9s0v4t0lL8KE0u5IWV10_7lCrX8LR815UZVHkxcfatn4yF"/>
+</div>
+<div class="flex-1">
+<p class="font-bold text-on-surface text-sm">Fresh Artisan Paneer (200g)</p>
+<p class="text-[10px] text-on-surface-variant mb-1 uppercase tracking-wider font-semibold">Morning Batch</p>
+<div class="flex justify-between items-center">
+<span class="text-xs font-semibold text-primary px-2 py-0.5 bg-secondary-container/50 rounded-lg">Qty: 1</span>
+<span class="font-bold text-on-surface text-sm">₹80</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Price Breakdown -->
+<div class="border-t border-surface-container pt-4 space-y-3">
+<div class="flex justify-between text-sm">
+<span class="text-on-surface-variant">Subtotal</span>
+<span class="font-medium text-on-surface">₹260</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-on-surface-variant">Delivery Fee</span>
+<span class="text-primary font-bold uppercase text-[10px] bg-secondary-fixed px-2 py-0.5 rounded-full">Free</span>
+</div>
+<div class="flex justify-between text-lg font-bold text-emerald-900 pt-3 mt-1 border-t border-surface-container-high">
+<span>Total Payable</span>
+<span>₹260</span>
+</div>
+</div>
+<button class="w-full mt-8 py-4 bg-gradient-to-r from-primary to-primary-container text-on-primary rounded-2xl font-bold text-lg shadow-lg shadow-primary/30 hover:scale-[1.02] transition-transform active:scale-95 flex items-center justify-center gap-2">
+<span>Confirm Order &amp; Pay ₹260</span>
+<span class="material-symbols-outlined text-xl">arrow_forward</span>
+</button>
+<p class="text-[10px] text-center text-on-surface-variant mt-4 px-4 leading-relaxed">
+                        By placing the order, you agree to Aasapure's Terms of Service and Privacy Policy. All products are delivered fresh.
+                    </p>
+</div>
+<!-- Trust Badge -->
+<div class="bg-emerald-50 dark:bg-emerald-900/10 p-4 rounded-3xl border border-emerald-100 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<div>
+<p class="text-sm font-bold text-emerald-900">100% Quality Guaranteed</p>
+<p class="text-[11px] text-emerald-700 leading-tight">Untouched by human hands. Fresh from farm to home.</p>
+</div>
+</div>
+</div>
+</aside>
+</main>
+<!-- Footer -->
+<footer class="bg-surface border-t border-surface-container py-12 px-6">
+<div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-8 opacity-50 grayscale transition-all hover:grayscale-0 hover:opacity-100">
+<img alt="Visa" class="h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKJn-ynsg1aBpIgLpsrOmFr5yrDs4L1H7hIUIK-Yp2HspTJDD0uI6QSGUwfMulbyx5RtenkOVKyrlPGacQLSY7x8Rre2djX4vpVM92hcXYgtX4DXg6NGv5u-6ivtj_Hq1gmwEIZRQTZ1eOlyBVnkRQN96_qGTVKfzB2ctbVUVYaRvXik98E97Bir4eMJOknYtAvSiTjIh8aqOKuibkmWjWAqlhP85F9m7rZBfrkNBAWixTZQ54O3NJYx0GpbDxRxphfneqxXpfAySD"/>
+<img alt="Mastercard" class="h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJ2hCXkTjX5LO-mvYB2tv6VZqqLu8oa5s5679zI6U8oN4pA2bubHxP36eYfXaWSXR_CwMJ2SbTt47iTceRiwRqkYd_VL75NbQ7tuzY12yYQeTmFs0nSDl4_RSThJBTC7GVtNx7vIOorLEQmnT5rXl5umYNxaRjb37laOu0Z-Ot6ux6JOQv5a6LckZUoc9qC4Dg85TcWTP9tgEbQRYzBklRV_IE0-8tEynuYp8eGpXSs83EGntqGjY21xktamCK02zsXcgLnr5ovebE"/>
+<img alt="UPI" class="h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsTcJqnzN4giiN3QUmIz_OZnTtIdZtcdxZZ_QGCL7919sa7dTw-1i0rDOVm1y0mbuB1BS8iQ_vc61iulcW0KaLLBEddFlyalEQZuBRvnrKEf65pULcUxuMmxNgEbd-JHba89VbDSG3Uuh_b1rI28qocfqgZ_43_yX5W2Z2H3zPE-Xt2PXw384pdZ0t8g4u2bFDcF_Z6WuxeURBjUklGtK1yCOndyV6nZ2DGEecmjCgSR4N41_24Nm45At5Ts6xseW086Wbutw-BPkY"/>
+</div>
+<div class="text-center md:text-right">
+<p class="text-xs font-medium text-on-surface-variant">© 2024 Aasapure Dairy Private Limited.</p>
+<p class="text-[10px] text-on-surface-variant/60 mt-1">FSSAI Lic. No. 10021000000000</p>
+</div>
+</div>
+</footer>
+</body></html>

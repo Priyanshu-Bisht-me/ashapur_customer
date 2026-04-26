@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aasapure Registration</title>
+<link rel="stylesheet" href="customer.css">
+
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Left Side -->
+    <div class="left">
+        <h1>ASHA PURE</h1>
+        <p>Fresh Milk. Pure & Simple.</p>
+
+        <h2>Welcome to AshaPure!</h2>
+        <p>Create your account to enjoy fresh milk delivered to your doorstep.</p>
+
+        <div class="features">
+            <p>✔ Pure & Quality Milk</p>
+            <p>✔ Trusted Local Farmers</p>
+            <p>✔ On-Time Delivery</p>
+        </div>
+    </div>
+
+    <!-- Right Side -->
+    <div class="right">
+        <h2>Create Your Account</h2>
+        <h4 style="color:rgb(130, 95, 49)">Registration as a Customer</h4>
+        <br/>
+      <h2 id="formTitle">Register</h2>
+
+<form onsubmit="registerUser(event)">
+
+    <div class="form-group">
+        <input type="text" id="name" placeholder="Full Name" required>
+    </div>
+
+    <div class="form-group">
+        <input type="text" id="mobile" placeholder="Mobile Number" required>
+    </div>
+
+    <div class="form-group">
+        <input type="email" id="email" placeholder="Email Address" required>
+    </div>
+
+    <div class="form-group">
+        <input type="password" id="password" placeholder="Password" required>
+    </div>
+
+    <div class="form-group">
+        <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+    </div>
+
+    <button type="submit" class="btn">Submit</button>
+
+</form>
+
+<p style="margin-top:10px;">
+    <span id="toggleText">Already have an account?</span>
+    <a href="#" onclick="toggleForm()">Login</a>
+</p>
+</div>
+
+</div>
+<script>
+let isLogin = false;
+
+// 🔄 Toggle form
+function toggleForm(){
+    isLogin = !isLogin;
+
+    const nameField = document.getElementById("nameField");
+    const mobileField = document.getElementById("mobileField");
+
+    if(isLogin){
+        document.getElementById("formTitle").innerText = "Login";
+        document.getElementById("submitBtn").innerText = "Login";
+
+        nameField.style.display = "none";
+        mobileField.style.display = "none";
+
+        document.getElementById("toggleText").innerText = "Don't have an account?";
+    } else {
+        document.getElementById("formTitle").innerText = "Register";
+        document.getElementById("submitBtn").innerText = "Register";
+
+        nameField.style.display = "block";
+        mobileField.style.display = "block";
+
+        document.getElementById("toggleText").innerText = "Already have an account?";
+    }
+}
+
+async function registerUser(e){
+    e.preventDefault();
+
+    let name = document.getElementById("name").value;
+    let mobile = document.getElementById("mobile").value;
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+    let confirmPassword = document.getElementById("confirmPassword").value;
+
+    if(password !== confirmPassword){
+        alert("Passwords do not match ❌");
+        return;
+    }
+
+    try {
+        let res = await fetch("http://localhost:5000/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ name, mobile, email, password })
+        });
+
+        let data = await res.json();
+
+        console.log("Response:", data); // 👈 DEBUG
+
+        if(res.ok){
+            localStorage.setItem("userId", data._id);
+            alert("Account Created ✅");
+
+            window.location.href = "/minimal_dashboard/code.html";
+        } else {
+            alert("Registration Failed ❌");
+        }
+
+    } catch (err) {
+        console.error(err);
+        alert("Server not connected ❌");
+    }
+}
+</script>
+</body>
+</html>

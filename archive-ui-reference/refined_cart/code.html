@@ -1,0 +1,286 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Cart - Aasapure</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#c1ebdf",
+                    "on-secondary-container": "#436a60",
+                    "on-primary": "#ffffff",
+                    "surface-container-high": "#e6e9e8",
+                    "on-primary-container": "#a8e7c5",
+                    "surface-container-highest": "#e1e3e2",
+                    "tertiary": "#713638",
+                    "primary": "#0f5238",
+                    "surface-variant": "#e1e3e2",
+                    "tertiary-fixed": "#ffdad9",
+                    "on-tertiary-fixed-variant": "#6f3537",
+                    "inverse-surface": "#2e3131",
+                    "inverse-primary": "#95d4b3",
+                    "background": "#f8faf9",
+                    "surface-container-low": "#f2f4f3",
+                    "surface": "#f8faf9",
+                    "inverse-on-surface": "#eff1f0",
+                    "tertiary-container": "#8d4d4e",
+                    "on-secondary-fixed-variant": "#274e45",
+                    "on-secondary": "#ffffff",
+                    "secondary-container": "#bee8dc",
+                    "outline-variant": "#bfc9c1",
+                    "secondary-fixed-dim": "#a6cfc3",
+                    "on-primary-fixed-variant": "#0e5138",
+                    "surface-bright": "#f8faf9",
+                    "error": "#ba1a1a",
+                    "surface-container": "#eceeed",
+                    "on-primary-fixed": "#002114",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed": "#00201a",
+                    "on-tertiary-fixed": "#390b0e",
+                    "outline": "#707973",
+                    "on-error": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-error-container": "#93000a",
+                    "secondary": "#3f665c",
+                    "tertiary-fixed-dim": "#ffb3b3",
+                    "on-tertiary": "#ffffff",
+                    "primary-container": "#2d6a4f",
+                    "on-surface-variant": "#404943",
+                    "primary-fixed-dim": "#95d4b3",
+                    "on-surface": "#191c1c",
+                    "on-tertiary-container": "#ffcfce",
+                    "surface-tint": "#2c694e",
+                    "surface-dim": "#d8dada",
+                    "on-background": "#191c1c",
+                    "primary-fixed": "#b1f0ce"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .brand-font { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 w-full flex justify-between items-center px-6 py-4 bg-surface/80 backdrop-blur-xl z-50">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold tracking-tighter text-emerald-900 brand-font" style="">Aasapure</span>
+<div class="hidden md:flex gap-6">
+<a class="text-slate-600 hover:text-emerald-700 transition-colors font-medium" href="#" style="">Dashboard</a>
+<a class="text-emerald-900 font-bold border-b-2 border-emerald-900 transition-colors" href="#" style="">Shop</a>
+<a class="text-slate-600 hover:text-emerald-700 transition-colors font-medium" href="#" style="">Subscriptions</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-emerald-900 hover:bg-emerald-50 rounded-full transition-all duration-200" style="">
+<span class="material-symbols-outlined" data-icon="notifications" style="">notifications</span>
+</button>
+<button class="p-2 text-emerald-900 hover:bg-emerald-50 rounded-full transition-all duration-200 relative" style="">
+<span class="material-symbols-outlined" data-icon="shopping_cart" style="">shopping_cart</span>
+<span class="absolute top-1 right-1 bg-primary text-on-primary text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full" style="">2</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-fixed">
+<img alt="User profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7GvJ15VJcqy1A0lzuNgt_op-STeVfzzfFNEEI-aKoq4WnuVXpz5BNLHVJG7HoZnLmbLQX9Ow-t5mR-3tY2Pbd4r2pOGRBPe39nw-3fdsk9ORXPynMkJvlBzldiIjVlQ8wZu5oB_yGtO2AGnUK-aGvRS1T1iN3QMzwAyWq_bE53K-fOST3CCPr0otcSRDKbCJD2EMzYtnsY4nveA4lFUTXGm-C9DoESZ6E5PKElhTutccEfnv5_r6OUIX7_Mw4Uu9_9lb-S9H6EMK1" style="">
+</div>
+</div>
+</nav>
+<!-- SideNavBar (Desktop Only) -->
+<aside class="hidden md:flex flex-col fixed left-0 top-0 h-full p-4 w-64 bg-slate-50 pt-24 z-40">
+<div class="mb-8 px-4">
+<h2 class="text-xl font-black text-emerald-900" style="">Aasapure</h2>
+<p class="text-sm text-slate-500" style="">Fresh Daily</p>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-100 rounded-xl transition-all" href="#" style="">
+<span class="material-symbols-outlined" data-icon="dashboard" style="">dashboard</span>
+<span class="font-medium" style="">Dashboard</span>
+</a>
+<a href="/refined_shop/code.html" class="flex items-center gap-3 px-4 py-3 hover:bg-surface-container rounded-xl">
+<span class="material-symbols-outlined">storefront</span>
+<span class="text-sm">Shop</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-100 rounded-xl transition-all" href="#" style="">
+<span class="material-symbols-outlined" data-icon="receipt_long" style="">receipt_long</span>
+<span class="font-medium" style="">Orders</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-100 rounded-xl transition-all" href="#" style="">
+<span class="material-symbols-outlined" data-icon="calendar_today" style="">calendar_today</span>
+<span class="font-medium" style="">Subscriptions</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-100 rounded-xl transition-all" href="#" style="">
+<span class="material-symbols-outlined" data-icon="redeem" style="">redeem</span>
+<span class="font-medium" style="">Rewards</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-100 rounded-xl transition-all" href="#" style="">
+<span class="material-symbols-outlined" data-icon="person" style="">person</span>
+<span class="font-medium" style="">Profile</span>
+</a>
+</nav>
+</aside>
+<main class="pt-28 pb-12 px-6 md:ml-64">
+<div class="max-w-6xl mx-auto">
+<header class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<a class="text-primary font-semibold flex items-center gap-1 mb-2 hover:underline text-sm" href="#" style="">
+<span class="material-symbols-outlined text-sm" data-icon="arrow_back" style="">arrow_back</span>
+                        Continue Shopping
+                    </a>
+<h1 class="text-4xl font-extrabold tracking-tight text-on-surface" style="">Your Cart</h1>
+</div>
+<div class="text-slate-500 font-medium" style="">2 Items in your basket</div>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Cart Items List -->
+<div class="lg:col-span-2 space-y-4">
+<!-- Item 1: Pure Cow Milk -->
+<div class="bg-surface-container-lowest rounded-2xl p-5 flex items-center gap-5 relative group transition-all hover:shadow-md">
+<div class="w-24 h-24 rounded-xl overflow-hidden flex-shrink-0 bg-surface-container-low">
+<img alt="Pure Cow Milk" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFUhYnsX7_Hb61ODNKdQB9_lzuzgKc4dbTiBMd9LVD2SlqXUukkKL5_S82zqm-p_nml60aF37sZQapJHhoi41YOG8J9QhX6HSVbmuYMdNYZv-HBwaj8oCyCb0w8LyEfNFfDDD665BOyrd1s_wGm5EVhMb1kOtRuZ9u5p8Kscux5qa_qhmN-oGjfoG0x_iQiqw24v4vsl9zRgbUuNr7gm1SzvpsTL0UDEG-jBzoZCZSorrtXqCyVR70FCDLzPpj9U72FoH9hb4qNLkG" style="">
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-lg font-bold text-emerald-950" style="">Pure Cow Milk</h3>
+<p class="text-slate-500 text-xs" style="">2 Litres • Daily Fresh</p>
+</div>
+<button class="p-1.5 text-slate-400 hover:text-error hover:bg-error-container rounded-lg transition-all" style="">
+<span class="material-symbols-outlined text-xl" data-icon="delete" style="">delete</span>
+</button>
+</div>
+<div class="flex items-center justify-between mt-4">
+<div class="flex items-center bg-surface-container-low rounded-lg p-0.5">
+<button class="w-7 h-7 flex items-center justify-center hover:bg-surface-container-high rounded-md transition-colors" style="">
+<span class="material-symbols-outlined text-base" data-icon="remove" style="">remove</span>
+</button>
+<span class="w-8 text-center font-bold text-sm text-emerald-900" style="">1</span>
+<button class="w-7 h-7 flex items-center justify-center hover:bg-surface-container-high rounded-md transition-colors" style="">
+<span class="material-symbols-outlined text-base" data-icon="add" style="">add</span>
+</button>
+</div>
+<span class="font-bold text-lg text-emerald-900" style="">₹140</span>
+</div>
+</div>
+</div>
+<!-- Item 2: Fresh Paneer -->
+<div class="bg-surface-container-lowest rounded-2xl p-5 flex items-center gap-5 relative group transition-all hover:shadow-md">
+<div class="w-24 h-24 rounded-xl overflow-hidden flex-shrink-0 bg-surface-container-low">
+<img alt="Fresh Paneer" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6Jp5ZQddXnH0BLjfa_kEkjddec9tZdyNDvIW8g7kZRgU8wbcIARGQ7-8gqtljPPP2zRaeO-d23kcmZ7p7iNy5wyGMCN_FPr6U9muGdhnC-fLH4icCabv8N2-QsXp02GZ0-2YhjQ-TjfJ5AyznezwCI2mgi7fpnObS2qeKigxZRLHuxw0fFpj57psF5AlBYFtsdk1obRQ5tOiGCCXy3wECZ8HZ_UYajmfPuVHzLHqJmFugadQFnKm6hd150Zm9e6x8EZMhNIyKYaV9" style="">
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-lg font-bold text-emerald-950" style="">Fresh Paneer</h3>
+<p class="text-slate-500 text-xs" style="">250g • Artisan Quality</p>
+</div>
+<button class="p-1.5 text-slate-400 hover:text-error hover:bg-error-container rounded-lg transition-all" style="">
+<span class="material-symbols-outlined text-xl" data-icon="delete" style="">delete</span>
+</button>
+</div>
+<div class="flex items-center justify-between mt-4">
+<div class="flex items-center bg-surface-container-low rounded-lg p-0.5">
+<button class="w-7 h-7 flex items-center justify-center hover:bg-surface-container-high rounded-md transition-colors" style="">
+<span class="material-symbols-outlined text-base" data-icon="remove" style="">remove</span>
+</button>
+<span class="w-8 text-center font-bold text-sm text-emerald-900" style="">1</span>
+<button class="w-7 h-7 flex items-center justify-center hover:bg-surface-container-high rounded-md transition-colors" style="">
+<span class="material-symbols-outlined text-base" data-icon="add" style="">add</span>
+</button>
+</div>
+<span class="font-bold text-lg text-emerald-900" style="">₹120</span>
+</div>
+</div>
+</div>
+<!-- Promo Section -->
+<div class="bg-secondary-fixed/20 rounded-2xl p-5 border border-dashed border-secondary-fixed/60 flex items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="loyalty" style="">loyalty</span>
+<div>
+<h4 class="font-bold text-emerald-950 text-sm" style=""><br></h4>
+<p class="text-xs text-secondary" style=""><br></p>
+</div>
+</div>
+<button class="bg-primary text-on-primary px-4 py-1.5 rounded-full font-semibold hover:bg-primary-container transition-all text-xs" style=""><br></button>
+</div>
+</div>
+<!-- Order Summary -->
+<div class="lg:col-span-1">
+<div class="bg-surface-container-lowest rounded-3xl p-6 sticky top-28 shadow-sm border border-surface-container">
+<h2 class="text-xl font-bold text-emerald-950 mb-6" style="">Order Summary</h2>
+<div class="space-y-3 mb-6">
+<div class="flex justify-between text-sm text-slate-600">
+<span class="" style="">Subtotal</span>
+<span class="font-semibold text-on-surface" style="">₹260</span>
+</div>
+<div class="flex justify-between text-sm text-slate-600">
+<span class="" style="">Delivery Fee</span>
+<span class="font-bold text-emerald-600" style="">FREE</span>
+</div>
+<div class="flex justify-between text-sm text-slate-600">
+<span class="" style="">Tax (GST)</span>
+<span class="font-semibold text-on-surface" style="">₹0.00</span>
+</div>
+</div>
+<div class="h-px bg-surface-container-low mb-6"></div>
+<div class="mb-8">
+<div class="flex justify-between items-center mb-1">
+<p class="text-slate-500 text-xs font-bold uppercase tracking-wider" style="">Total Amount</p>
+<span class="text-[10px] bg-primary-fixed/50 text-on-primary-fixed-variant px-2 py-0.5 rounded-full font-bold" style="">SAVING ₹25</span>
+</div>
+<p class="text-4xl font-extrabold text-emerald-950 tracking-tight" style="">₹260</p>
+</div>
+<button class="w-full bg-primary text-on-primary py-4 px-6 rounded-2xl font-bold text-base flex items-center justify-center gap-2 shadow-lg shadow-primary/20 hover:bg-primary-container transition-all group" style="">
+                            Proceed to Checkout
+                            <span class="material-symbols-outlined transition-transform group-hover:translate-x-1" data-icon="arrow_forward" style="">arrow_forward</span>
+</button>
+<div class="mt-8 flex items-center justify-center gap-6 opacity-40">
+<span class="material-symbols-outlined" data-icon="verified_user" style="">verified_user</span>
+<span class="material-symbols-outlined" data-icon="local_shipping" style="">local_shipping</span>
+<span class="material-symbols-outlined" data-icon="payments" style="">payments</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface/90 backdrop-blur-xl flex justify-around items-center py-4 px-2 z-50 border-t border-surface-container-high">
+<button class="flex flex-col items-center gap-1 text-slate-500" style="">
+<span class="material-symbols-outlined" data-icon="dashboard" style="">dashboard</span>
+<span class="text-[10px] font-medium" style="">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-emerald-900 font-bold" style="">
+<span class="material-symbols-outlined" data-icon="storefront" style="">storefront</span>
+<span class="text-[10px]" style="">Shop</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-500" style="">
+<span class="material-symbols-outlined" data-icon="calendar_today" style="">calendar_today</span>
+<span class="text-[10px] font-medium" style="">Daily</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-500" style="">
+<span class="material-symbols-outlined" data-icon="person" style="">person</span>
+<span class="text-[10px] font-medium" style="">Profile</span>
+</button>
+</nav>
+</body></html>
