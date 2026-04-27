@@ -7,23 +7,53 @@ const productSchema = new mongoose.Schema(
       required: true,
       trim: true
     },
+    slug: {
+      type: String,
+      required: true,
+      trim: true,
+      unique: true,
+      index: true
+    },
+    category: {
+      type: String,
+      required: true,
+      trim: true,
+      index: true
+    },
     description: {
+      type: String,
+      trim: true,
+      default: ""
+    },
+    imageUrl: {
       type: String,
       trim: true,
       default: ""
     },
     price: {
       type: Number,
+      required: true,
+      min: 0,
       default: 0
     },
     unit: {
       type: String,
       trim: true,
-      default: ""
+      default: "1 unit"
     },
-    isActive: {
+    stock: {
+      type: Number,
+      min: 0,
+      default: 0
+    },
+    active: {
       type: Boolean,
-      default: true
+      default: true,
+      index: true
+    },
+    nutritionBadges: {
+      type: [String],
+      default: []
     }
   },
   {
@@ -32,4 +62,8 @@ const productSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.models.Product || mongoose.model("Product", productSchema);
+productSchema.index({ active: 1, category: 1, name: 1 });
+
+module.exports =
+  mongoose.models.Product ||
+  mongoose.model("Product", productSchema);

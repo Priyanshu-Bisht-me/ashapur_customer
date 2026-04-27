@@ -1,19 +1,16 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import AuthIntro from "../components/AuthIntro";
-import { loginCustomer } from "../api/customerApi";
+import { login } from "../api/authApi";
 import { saveSession } from "../auth/authStorage";
-
-const initialForm = {
-  email: "",
-  password: ""
-};
+import ProductImage from "../components/ProductImage";
+import { AUTH_IMAGES } from "../utils/media";
+import { pushToast } from "../utils/toastBus";
 
 function LoginPage() {
-  const [form, setForm] = useState(initialForm);
-  const [error, setError] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
+  const [form, setForm] = useState({ email: "", password: "" });
+  const [error, setError] = useState("");
+  const [busy, setBusy] = useState(false);
 
   function handleChange(event) {
     setForm((current) => ({
@@ -25,69 +22,95 @@ function LoginPage() {
   async function handleSubmit(event) {
     event.preventDefault();
     setError("");
-    setIsSubmitting(true);
+    setBusy(true);
 
     try {
-      const user = await loginCustomer(form);
-      saveSession(user);
-      navigate("/customer/dashboard");
+      const payload = await login(form);
+      saveSession(payload);
+      pushToast({ type: "success", message: "Welcome back." });
+      navigate(payload.user.role === "admin" ? "/admin/dashboard" : "/dashboard");
     } catch (submissionError) {
       setError(submissionError.message);
     } finally {
-      setIsSubmitting(false);
+      setBusy(false);
     }
   }
 
   return (
-    <div className="auth-page">
-      <AuthIntro
-        title="A cleaner customer entry point"
-        description="This is a fresh React setup for customers, inspired by the stronger stitched screens and disconnected from the old page logic."
-      />
+    <div className="auth-shell">
+      <div className="auth-layout">
+        <section className="auth-visual">
+          <ProductImage
+            src={AUTH_IMAGES.customer}
+            alt="Fresh dairy bottles"
+            className="auth-visual__media"
+            imgClassName="auth-visual__image"
+            fallbackLabel="Fresh dairy"
+          />
+          <div className="auth-visual__content">
+            <span className="page-header__eyebrow">Fresh every morning</span>
+            <h2>Simple milk delivery for daily homes.</h2>
+            <p>Track orders, manage subscriptions, and reorder essentials in a calm customer space.</p>
+            <div className="auth-visual__points">
+              <div>
+                <strong>Daily essentials</strong>
+                <p>Milk, curd, paneer, butter, and ghee in one tidy flow.</p>
+              </div>
+              <div>
+                <strong>Quick account access</strong>
+                <p>Your orders, rewards, and preferences stay aligned with real backend data.</p>
+              </div>
+            </div>
+          </div>
+        </section>
 
-      <section className="auth-panel">
-        <div className="auth-panel__header">
-          <span className="auth-panel__tag">Customer Login</span>
-          <h2>Welcome back</h2>
-          <p>Sign in to see deliveries, subscriptions and recent orders.</p>
-        </div>
+        <section className="auth-panel">
+          <div className="auth-panel__header">
+            <span className="page-header__eyebrow">Customer login</span>
+            <h1>Welcome back</h1>
+            <p>Sign in to manage deliveries, subscriptions, rewards, and your saved addresses.</p>
+          </div>
 
-        <form className="auth-form" onSubmit={handleSubmit}>
-          <label>
-            Email
-            <input
-              type="email"
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              placeholder="you@example.com"
-              required
-            />
-          </label>
+          <form className="form-grid" onSubmit={handleSubmit}>
+            <label>
+              Email
+              <input
+                type="email"
+                name="email"
+                value={form.email}
+                onChange={handleChange}
+                placeholder="you@example.com"
+                required
+              />
+            </label>
 
-          <label>
-            Password
-            <input
-              type="password"
-              name="password"
-              value={form.password}
-              onChange={handleChange}
-              placeholder="Enter your password"
-              required
-            />
-          </label>
+            <label>
+              Password
+              <input
+                type="password"
+                name="password"
+                value={form.password}
+                onChange={handleChange}
+                placeholder="Enter your password"
+                required
+              />
+            </label>
 
-          {error ? <p className="form-error">{error}</p> : null}
+            {error ? <p className="form-error">{error}</p> : null}
 
-          <button className="primary-button" type="submit" disabled={isSubmitting}>
-            {isSubmitting ? "Signing in..." : "Login"}
-          </button>
-        </form>
+            <button type="submit" className="button button--primary button--full" disabled={busy}>
+              {busy ? "Signing in..." : "Login"}
+            </button>
+          </form>
 
-        <p className="auth-panel__footer">
-          New here? <Link to="/customer/signup">Create a customer account</Link>
-        </p>
-      </section>
+          <div className="auth-footer">
+            <span>
+              New customer? <Link to="/signup">Create account</Link>
+            </span>
+            <Link to="/admin/login">Admin login</Link>
+          </div>
+        </section>
+      </div>
     </div>
   );
 }

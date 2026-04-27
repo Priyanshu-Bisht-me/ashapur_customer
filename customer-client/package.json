@@ -6,15 +6,18 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "qa:screenshots": "node tools/qa-screenshots.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.30.1"
+    "react-router-dom": "^6.30.1",
+    "stitch_aasapure_customer_module": "file:.."
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.4.1",
+    "playwright": "^1.55.0",
     "vite": "^5.4.19"
   }
 }

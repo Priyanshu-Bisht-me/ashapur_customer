@@ -1,82 +1,116 @@
 import { Link, useNavigate } from "react-router-dom";
-import {
-  getCart,
-  getCartTotal,
-  removeCartItem,
-  updateCartItemQuantity
-} from "../cart/cartStorage";
-import { useMemo, useState } from "react";
+import ProductImage from "../components/ProductImage";
+import EmptyState from "../components/EmptyState";
+import PageHeader from "../components/PageHeader";
+import QuantityStepper from "../components/QuantityStepper";
+import { useCart } from "../hooks/useCart";
+import { formatCurrency } from "../utils/formatters";
+import { getProductImage } from "../utils/media";
 
 function CartPage() {
   const navigate = useNavigate();
-  const [cart, setCart] = useState(getCart());
+  const { items, subtotal, updateItem, removeItem } = useCart();
+  const deliveryFee = subtotal > 0 ? 0 : 0;
+  const tax = subtotal * 0.05;
+  const grandTotal = subtotal + deliveryFee + tax;
 
-  const total = useMemo(() => getCartTotal(cart), [cart]);
-
-  function handleQuantityChange(productId, value) {
-    setCart(updateCartItemQuantity(productId, value));
-  }
-
-  function handleRemove(productId) {
-    setCart(removeCartItem(productId));
-  }
-
-  if (!cart.items.length) {
+  if (!items.length) {
     return (
-      <section className="cart-page">
-        <div className="empty-block">
-          <strong>Your cart is empty.</strong>
-          <p>Add products from shop to continue checkout.</p>
-          <Link to="/customer/shop" className="inline-pill-link">
-            Go to shop
+      <EmptyState
+        title="Your cart is empty"
+        description="Add products from the shop to continue."
+        action={
+          <Link to="/shop" className="button button--primary">
+            Browse products
           </Link>
-        </div>
-      </section>
+        }
+      />
     );
   }
 
   return (
-    <section className="cart-page">
-      <div className="page-intro">
-        <h1>Your cart</h1>
-        <p>Adjust quantities or remove items before checkout.</p>
-      </div>
+    <section className="page-stack">
+      <PageHeader
+        eyebrow="Shopping cart"
+        title="Review your cart"
+        description="Adjust quantities, remove items, and keep the checkout path simple."
+      />
 
-      <div className="cart-list">
-        {cart.items.map((item) => (
-          <article className="cart-row" key={item.productId}>
+      <div className="cart-layout">
+        <div className="panel">
+          <div className="card-header">
             <div>
-              <strong>{item.productName}</strong>
-              <p>{item.unit}</p>
+              <h2>Selected items</h2>
+              <p>{items.length} product{items.length === 1 ? "" : "s"} selected</p>
             </div>
+          </div>
 
-            <div className="cart-row__actions">
-              <label>
-                Qty
-                <input
-                  type="number"
-                  min="1"
-                  value={item.quantity}
-                  onChange={(event) => handleQuantityChange(item.productId, event.target.value)}
-                />
-              </label>
-              <span>Rs. {item.price * item.quantity}</span>
-              <button type="button" onClick={() => handleRemove(item.productId)}>
-                Remove
-              </button>
-            </div>
-          </article>
-        ))}
-      </div>
-
-      <div className="cart-summary-card">
-        <strong>Total: Rs. {total}</strong>
-        <div className="cart-summary-card__actions">
-          <Link to="/customer/shop" className="inline-pill-link inline-pill-link--subtle">
-            Continue shopping
-          </Link>
-          <button type="button" onClick={() => navigate("/customer/checkout")}>Proceed to checkout</button>
+          <div className="list-stack">
+            {items.map((item) => (
+              <article key={item.productId} className="cart-row">
+                <div className="cart-row__info">
+                  <ProductImage
+                    src={getProductImage(item)}
+                    alt={item.name}
+                    className="cart-thumb"
+                    imgClassName="media-frame__image"
+                    fallbackLabel={item.name}
+                  />
+                  <div>
+                    <strong>{item.name}</strong>
+                    <p>{item.unit}</p>
+                  </div>
+                </div>
+                <div className="cart-row__actions">
+                  <QuantityStepper value={item.quantity} onChange={(value) => updateItem(item.productId, value)} />
+                  <strong>{formatCurrency(item.price * item.quantity)}</strong>
+                  <button type="button" className="button button--link" onClick={() => removeItem(item.productId)}>
+                    Remove
+                  </button>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
+
+        <aside className="summary-card">
+          <div className="card-header">
+            <div>
+              <h2>Totals</h2>
+              <p>Simple summary before checkout</p>
+            </div>
+          </div>
+
+          <div className="summary-lines">
+            <div>
+              <span>Subtotal</span>
+              <strong>{formatCurrency(subtotal)}</strong>
+            </div>
+            <div>
+              <span>Delivery</span>
+              <strong>{deliveryFee === 0 ? "Free" : formatCurrency(deliveryFee)}</strong>
+            </div>
+            <div>
+              <span>Tax</span>
+              <strong>{formatCurrency(tax)}</strong>
+            </div>
+            <div className="summary-lines__total">
+              <span>Total</span>
+              <strong className="summary-total">{formatCurrency(grandTotal)}</strong>
+            </div>
+          </div>
+
+          <p className="helper-text">Delivery is included for this academic project flow.</p>
+
+          <div className="summary-card__actions">
+            <Link to="/shop" className="button button--ghost">
+              Continue shopping
+            </Link>
+            <button type="button" className="button button--primary" onClick={() => navigate("/checkout")}>
+              Checkout
+            </button>
+          </div>
+        </aside>
       </div>
     </section>
   );

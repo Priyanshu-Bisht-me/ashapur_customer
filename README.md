@@ -1,110 +1,237 @@
 # Aasapure Customer Module
 
-A clean customer-facing module built with:
+Aasapure is a production-style MERN dairy ecommerce project with separate customer and admin experiences. The customer app covers signup, login, shopping, checkout, orders, subscriptions, rewards, and profile management. The admin app focuses on products, orders, customers, subscriptions, and operational visibility.
 
-- Frontend: React + Vite
-- Backend: Node.js + Express
-- Database: MongoDB Atlas via Mongoose
+## Project Overview
 
-## Implemented Features
+- Customer-facing dairy catalog with cart, checkout, orders, rewards, and subscriptions
+- Admin panel for managing products, order status, customers, and recurring plans
+- MongoDB-backed data with JWT authentication and seeded core catalog bootstrap
+- Responsive UI tuned for mobile, tablet, laptop, and desktop
 
-- Customer signup
-- Customer login
-- Customer dashboard
-- Shop page with seeded products
-- Cart management (add/remove/update quantity)
-- Checkout with address and payment method
-- Order creation in MongoDB
-- Order history page
-- Order tracking timeline:
-  - Placed
-  - Packed
-  - Assigned
-  - Out for Delivery
-  - Delivered
+## Features
 
-## Project Structure
+### Customer
 
-- server/ -> Express API, models, MongoDB connection
-- customer-client/ -> React customer application
-- archive-ui-reference/ -> archived legacy stitched UI references
+- Signup, login, logout, and session restore
+- Dashboard with active delivery, rewards, subscriptions, and featured products
+- Product catalog with search, category filters, sorting, and quick add to cart
+- Product detail page with quantity controls and subscription action
+- Cart, checkout, order placement, order history, and order tracking
+- Rewards progress and redeem suggestions
+- Profile updates for personal info, addresses, and preferences
 
-## Prerequisites
+### Admin
 
-- Node.js 18+
-- npm 9+
-- MongoDB Atlas connection string (or use current default fallback in server)
+- Separate admin login
+- Dashboard stats for customers, products, orders, subscriptions, revenue, and low stock
+- Orders list with status and rider updates
+- Product add, edit, enable, and disable flow
+- Customers list and subscriptions overview
 
-## Environment
+## Tech Stack
 
-Create a root .env file (optional if fallback URI is used in server):
+- Frontend: React 18, Vite, React Router
+- Backend: Node.js, Express
+- Database: MongoDB with Mongoose
+- Auth: JWT bearer tokens
+- QA Tooling: Playwright screenshot sweep plus API smoke testing
 
-MONGODB_URI=your_mongodb_atlas_connection_string
+## Screenshots
+
+### Customer Dashboard
+
+![Customer Dashboard](./docs/screenshots/dashboard.png)
+
+### Shop Catalog
+
+![Shop Catalog](./docs/screenshots/shop.png)
+
+### Admin Products
+
+![Admin Products](./docs/screenshots/admin-products.png)
+
+## Folder Structure
+
+```text
+.
+|-- customer-client/
+|   |-- public/
+|   |-- src/
+|   |   |-- api/
+|   |   |-- auth/
+|   |   |-- components/
+|   |   |-- hooks/
+|   |   |-- layouts/
+|   |   |-- pages/
+|   |   `-- utils/
+|   `-- tools/
+|-- docs/
+|   `-- screenshots/
+|-- server/
+|   |-- controllers/
+|   |-- middleware/
+|   |-- models/
+|   |-- routes/
+|   `-- utils/
+|-- archive-ui-reference/
+|-- DATABASE_SCHEMA.md
+`-- package.json
+```
+
+## Environment Variables
+
+Create a root `.env` file:
+
+```env
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
 PORT=5000
+```
 
-For frontend API base URL (optional), create:
+Optional frontend override in `customer-client/.env`:
 
-customer-client/.env
-
+```env
 VITE_API_BASE_URL=http://localhost:5000
+```
 
-## Install
+## Setup
 
-From workspace root:
+Install backend dependencies from the project root:
 
+```bash
 npm install
+```
 
-From frontend folder:
+Install frontend dependencies:
 
-cd customer-client
-npm install
+```bash
+npm --prefix customer-client install
+```
 
-## Run Backend
+## Run Commands
 
-From workspace root:
+Backend:
 
+```bash
 npm run server
+```
 
-Server health check:
+Frontend:
 
-GET http://localhost:5000/health
+```bash
+npm --prefix customer-client run dev
+```
 
-## Run Frontend
+Frontend production build:
 
-From customer-client folder:
+```bash
+npm --prefix customer-client run build
+```
 
-npm run dev
+## QA Commands
 
-Open:
+API smoke suite:
 
-http://localhost:5173/customer/login
+```bash
+npm run qa:api
+```
 
-## Build Frontend
+Responsive screenshot sweep:
 
-From customer-client folder:
+```bash
+npm --prefix customer-client run qa:screenshots
+```
 
-npm run build
+## Frontend Routes
 
-## Main Customer API Endpoints
+### Public
 
-Auth:
+- `/login`
+- `/signup`
+- `/admin/login`
 
-- POST /api/customer/signup
-- POST /api/customer/login
+### Customer
 
-Dashboard:
+- `/dashboard`
+- `/shop`
+- `/products/:slug`
+- `/cart`
+- `/checkout`
+- `/orders`
+- `/orders/:id`
+- `/subscriptions`
+- `/rewards`
+- `/profile`
 
-- GET /api/customer/dashboard/:userId
+### Admin
 
-Shop/Order:
+- `/admin/dashboard`
+- `/admin/orders`
+- `/admin/products`
+- `/admin/customers`
+- `/admin/subscriptions`
 
-- GET /api/customer/products
-- POST /api/customer/orders
-- GET /api/customer/orders/:userId
-- GET /api/customer/orders/track/:orderId
+## Main API Routes
+
+### Auth
+
+- `POST /api/auth/signup`
+- `POST /api/auth/login`
+- `GET /api/auth/me`
+- `POST /api/auth/seed-admin`
+
+### Customer APIs
+
+- `GET /api/dashboard`
+- `GET /api/products`
+- `GET /api/products/:slug`
+- `POST /api/cart/checkout`
+- `GET /api/orders`
+- `GET /api/orders/:id`
+- `GET /api/subscriptions`
+- `POST /api/subscriptions`
+- `PATCH /api/subscriptions/:id`
+- `GET /api/profile`
+- `PATCH /api/profile`
+- `GET /api/rewards`
+- `GET /api/meta`
+
+### Admin APIs
+
+- `GET /api/admin/stats`
+- `GET /api/admin/customers`
+- `GET /api/admin/products`
+- `POST /api/admin/products`
+- `PATCH /api/admin/products/:id`
+- `GET /api/admin/orders`
+- `PATCH /api/admin/orders/:id`
+- `GET /api/admin/subscriptions`
+
+## Demo Credentials
+
+Admin login:
+
+- Email: `admin@aasapure.com`
+- Password: `admin123`
+
+Customer login:
+
+- Create a new customer through the signup flow
+
+## Verification Summary
+
+Completed in the final pass:
+
+- Frontend production build passed
+- Backend server started successfully
+- MongoDB connection verified through `/health`
+- API smoke suite passed across customer and admin flows
+- Responsive screenshot QA passed at `390`, `768`, `1024`, and `1440`
+- Customer and admin routes opened without console errors or warnings
 
 ## Notes
 
-- Product seed is checked on backend startup (Milk, Curd, Paneer, Butter, Ghee, Lassi).
-- Legacy stitched UI pages were archived safely instead of deleted.
-- This repo currently focuses on customer module workflows.
+- `server/utils/bootstrap.js` normalizes older records and ensures the core dairy catalog exists
+- Product imagery uses stable CDN links with graceful frontend fallbacks
+- Database structure details are documented in [DATABASE_SCHEMA.md](./DATABASE_SCHEMA.md)
