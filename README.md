@@ -9,7 +9,7 @@ Aasapure is a production-style MERN dairy ecommerce project with separate custom
 - MongoDB-backed data with JWT authentication and seeded core catalog bootstrap
 - Responsive UI tuned for mobile, tablet, laptop, and desktop
 
-## Features
+## Feature
 
 ### Customer
 
