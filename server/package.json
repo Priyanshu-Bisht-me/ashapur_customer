@@ -4,6 +4,7 @@
   "private": true,
   "description": "Backend service for the Ashapur customer page",
   "main": "server.js",
+  "license": "MIT",
   "type": "commonjs",
   "scripts": {
     "start": "node server.js",
@@ -15,7 +16,6 @@
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "jsonwebtoken": "^9.0.3",
-    "mongoose": "^9.5.0",
-    "license": "MIT"
+    "mongoose": "^9.5.0"
   }
 }

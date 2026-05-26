@@ -235,3 +235,9 @@ Completed in the final pass:
 - `server/utils/bootstrap.js` normalizes older records and ensures the core dairy catalog exists
 - Product imagery uses stable CDN links with graceful frontend fallbacks
 - Database structure details are documented in [DATABASE_SCHEMA.md](./DATABASE_SCHEMA.md)
+
+## License
+
+This project is licensed under the MIT License.
+
+See [LICENSE](./LICENSE) for the full license text.
