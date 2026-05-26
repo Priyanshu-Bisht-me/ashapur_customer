@@ -2,6 +2,7 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const express = require("express");
 const mongoose = require("mongoose");
+const path = require("path");
 const authRoutes = require("./routes/authRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");
 const productRoutes = require("./routes/productRoutes");
@@ -13,7 +14,7 @@ const { errorHandler, notFoundHandler } = require("./middleware/errorMiddleware"
 const { bootstrapDatabase } = require("./utils/bootstrap");
 const { DELIVERY_SLOTS, ORDER_STATUSES } = require("./utils/constants");
 
-dotenv.config();
+dotenv.config({ path: path.join(__dirname, ".env") });
 
 const app = express();
 const PORT = process.env.PORT || 5000;
